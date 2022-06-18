@@ -1,0 +1,18 @@
+.graf {
+  background-color: #edede9;
+  border: 1px solid #d6ccc2;
+}
+
+.backdrop {
+  fill: #ccc;
+  stroke: #777;
+}
+
+.axis {
+  font-size: 16pt;
+}
+
+.titulo {
+  font-size: 16pt;
+  font-weight: bold;
+}

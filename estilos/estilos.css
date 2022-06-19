@@ -4,12 +4,12 @@
   }
   
   .backdrop {
-    fill: #ccc;
+    fill: rgb(15, 13, 13);
     stroke: #777;
   }
 
   .axis {
-    fill: #6B705C;
+    fill: #;
     font-size: 12pt;
     color: #00f;
   }

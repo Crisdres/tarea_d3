@@ -96,7 +96,8 @@ const draw = async (m = "Tasa") => {
     const color =d3
                     .scaleOrdinal()
                     .domain(kpi)
-                    .range(["#06D6A0","#118AB2","#073B4C"])
+                    //.range(["#06D6A0","#118AB2","#073B4C"])
+                    .range(d3.schemePastel1)
 
 
     // dibujando ejes

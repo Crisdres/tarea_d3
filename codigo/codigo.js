@@ -1,5 +1,4 @@
 // Seleccion de elementos en el HTML
-
 const graf = d3.selectAll("#graf")
 const metrica =d3.select("#metrica")
 
@@ -8,7 +7,7 @@ const margins = {
                     top: 50,
                     right: 20,
                     bottom: 70,
-                    left: 75
+                    left: 150
                 }
 
 const anchoTotal = +graf.style("width").slice(0, -2)
@@ -25,15 +24,15 @@ const svg = graf
   .attr("height", altoTotal)
   .attr("class","graf")
 
-// declaración de los elmentos del tipo de grafico y 
+// declaración del area del grafico y 
 // establecimiento de de sus atributos
 svg.append("rect")
-.attr("x",0)
-.attr("y",0)
-.attr("width",ancho)
-.attr("height",alto)
-.attr("transform",`translate(${margins.left}, ${margins.top})`)
-.classed("backdrop",true)
+    .attr("x",0)
+    .attr("y",0)
+    .attr("width",ancho)
+    .attr("height",alto)
+    .attr("transform",`translate(${margins.left}, ${margins.top})`)
+    .classed("backdrop",true)
 
 // crear un grupo, necesarios para interactividad
 const g =svg.append("g")
@@ -42,20 +41,12 @@ const g =svg.append("g")
 
 
 
-
-
-
-
-
-
-
-
-
-
 //#######################################
 //         funcion pde graficado 
 //#######################################
 const draw = async (m = "Tasa") => {
+
+    
     let data= await d3.csv('data/data.csv', d3.autoType)
     // convertir a numericos los datos
     // data.forEach( (d) => {d.Anio = +d.Anio}
@@ -117,7 +108,11 @@ const draw = async (m = "Tasa") => {
                     .attr("y",-10)
                     .attr("text-anchor","middle")
                     .classed("titulo",true)
-    // llamar al eventos, se mueve todo lo que es dinamico
+
+
+//#######################################
+//     funcion particion dinamica
+//#######################################
     const render = (m) => {
         // ordenar el año
         //data.sort((a,b) => a[m]- b[m])        

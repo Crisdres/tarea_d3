@@ -1,5 +1,6 @@
 // Seleccion de elementos en el HTML
 const graf = d3.selectAll("#graf")
+
 const metrica =d3.select("#metrica")
 
 // Dimenciones

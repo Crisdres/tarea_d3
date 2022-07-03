@@ -1,5 +1,14 @@
-// Seleccion de elementos en el HTML
-const graf = d3.selectAll("#graf")
+
+
+
+
+//#######################################
+//         funcion pde graficado 
+//#######################################
+const draw = async (m = "Tasa", apuntador= "#graf") => {
+
+    // Seleccion de elementos en el HTML
+const graf = d3.selectAll(apuntador)
 
 const metrica =d3.select("#metrica")
 
@@ -40,13 +49,6 @@ const g =svg.append("g")
 .attr("transform",`translate(${margins.left}, ${margins.top})`)
 
 
-
-
-//#######################################
-//         funcion pde graficado 
-//#######################################
-const draw = async (m = "Tasa") => {
-
     
     let data= await d3.csv('data/data.csv', d3.autoType)
     // convertir a numericos los datos
@@ -68,9 +70,6 @@ const draw = async (m = "Tasa") => {
 
     // Accesor
     const xAccesor = (d) => d.Anio
-
-
-
 
      // ESCALADORES eje Y
      const y = d3.scaleLinear()
@@ -185,7 +184,9 @@ const draw = async (m = "Tasa") => {
 
 }
     
-draw()
+draw(m = "Tasa", apuntador= "#graf")
+draw(m = "Poblacion", apuntador= "#graf2")
+draw(m = "Desempleo", apuntador= "#graf3")
 
 
 

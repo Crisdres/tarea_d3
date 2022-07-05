@@ -1,7 +1,3 @@
-
-
-
-
 //#######################################
 //         funcion pde graficado 
 //#######################################
@@ -10,14 +6,14 @@ const draw = async (m = "Tasa", apuntador= "#graf") => {
     // Seleccion de elementos en el HTML
 const graf = d3.selectAll(apuntador)
 
-const metrica =d3.select("#metrica")
+
 
 // Dimenciones
 const margins = {
                     top: 50,
                     right: 20,
                     bottom: 70,
-                    left: 150
+                    left: 50
                 }
 
 const anchoTotal = +graf.style("width").slice(0, -2)
@@ -52,19 +48,13 @@ const g =svg.append("g")
     
     let data= await d3.csv('data/data.csv', d3.autoType)
     // convertir a numericos los datos
-    // data.forEach( (d) => {d.Anio = +d.Anio}
+    //ordenar datos por año
+    data.sort((a,b) => b[b.Anio] - a[a.Anio]) 
 
     // funcion para obtener una lista de las columnas
     kpi=Object.keys(data[0]).slice(1)
+    //console.log(data[0])
 
-    // insertando valores en el select
-    metrica
-        .selectAll("option")
-        .data(kpi)
-        .enter()
-        .append("option")
-        .attr("value", d => d)
-        .text(d => d)
 
     //console.log(data)
 
@@ -128,7 +118,7 @@ const g =svg.append("g")
         const rect = g
             .selectAll('rect')// seleccion vacia no existe rect
             .data(data)//cargamos los datos en base a las filas
-            
+        
         rect.enter()//itera sobre las filas
             //pocisiones inicieales
             .append('rect')
@@ -165,25 +155,14 @@ const g =svg.append("g")
             .transition()
             .duration(1000)
             .call(yAxis)
-        
+    
     }
-
     
     
-    // escucha de eventos
-    metrica.on("change", (e) => {
-        // bloquea el compartamiento por defecto del elemento
-        e.preventDefault()
-        
-    
-        render(metrica.node().value)
-
-
-    })
     render(m)
-
-}
     
+}
+
 draw(m = "Tasa", apuntador= "#graf")
 draw(m = "Poblacion", apuntador= "#graf2")
 draw(m = "Desempleo", apuntador= "#graf3")

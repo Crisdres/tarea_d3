@@ -14,7 +14,6 @@ const altoT = (anchoT * 9) / 16
 
 const anc =anchoT-margins.left-margins.right
 const alt = altoT-margins.bottom-margins.top
-console.log(anchoT, altoT, alt,  anc)
   // append the svg object to the body of the page
   var svg = line
   .append("svg")
@@ -65,7 +64,7 @@ const drawLine = async (val = "Mundo") => {
       .call(d3.axisLeft(y));
 
 
-    // Add the line
+    // Linea
     var sLine = svg.append("path")
       .datum(data)
       .attr("fill", "none")
@@ -75,6 +74,8 @@ const drawLine = async (val = "Mundo") => {
         .y(function(d) { return y(d.Tasa) }))
       .attr("stroke", (d) => color(d.Pais))
 
+
+    // Puntos
     var dots = svg.selectAll("dot")
     .data(data)
     .enter().append("circle")								
@@ -88,7 +89,6 @@ const drawLine = async (val = "Mundo") => {
           tooltip.html("Año:" + (d.Anio) + "Tasa:"  + d.Tasa)	
           .style("left", (event.x) + "px")		
           .style("top", (event.y - 15) + "px");	
-          console.log(event.x,event.y)
       })					
     .on("mouseout", function(d) {		
       tooltip.transition()		
@@ -105,7 +105,6 @@ const drawLine = async (val = "Mundo") => {
 
   function update(value){
     var dataU = dataSet.filter((d) => d.Pais === value ? d : NaN)
-    console.log(dataU)
     sLine
     .datum(dataU)
     .transition()

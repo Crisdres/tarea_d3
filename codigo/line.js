@@ -86,8 +86,8 @@ const drawLine = async (val = "Mundo") => {
           .duration(200)		
           .style("opacity", .9);		
           tooltip.html("Año:" + (d.Anio) + "Tasa:"  + d.Tasa)	
-          .style("left", (event.x + 5) + "px")		
-          .style("top", (event.y - 20) + "px");	
+          .style("left", (event.x) + "px")		
+          .style("top", (event.y - 15) + "px");	
           console.log(event.x,event.y)
       })					
     .on("mouseout", function(d) {		
